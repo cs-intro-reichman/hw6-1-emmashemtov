@@ -8,9 +8,29 @@ import java.awt.Color;
  * of 100 pixels and a height of 900 pixels, use: java Editor2 ironman.ppm 100 900
  */
 public class Editor2 {
+	public static void main(String[] args) {
+		// 1. Get the arguments
+		String fileName = args[0];
+		int width = Integer.parseInt(args[1]);
+		int height = Integer.parseInt(args[2]);
 
-	public static void main (String[] args){
-		//// Replace this comment with your code.
-		//// This function is similar to the main function of Editor1.java			
+		// 2. Read the source image
+		Color[][] imageIn = Runigram.read(fileName);
+
+		// 3. Scale the image
+		Color[][] imageOut = Runigram.scaled(imageIn, width, height);
+
+		// 4. Display the source image
+		Runigram.setCanvas(imageIn);
+		Runigram.display(imageIn);
+		// Runigram.print(imageIn); // Uncomment for debugging small images
+
+		// 5. Pause for 3 seconds (3000 milliseconds)
+		StdDraw.pause(3000);
+
+		// 6. Display the scaled image
+		Runigram.setCanvas(imageOut);
+		Runigram.display(imageOut);
+		// Runigram.print(imageOut); // Uncomment for debugging small images
 	}
 }
